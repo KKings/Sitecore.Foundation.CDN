@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{D1946D7A-3483-4FFC-AD7B-B12BADD9B598}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		gulp-config.js = gulp-config.js
+		gulpfile.js = gulpfile.js
+		LICENSE = LICENSE
+		Readme.md = Readme.md
+		TdsGlobal.config = TdsGlobal.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{6BFFD3A7-F23E-431B-AAF7-375B9667B759}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CDN", "CDN", "{EEFDF92F-878F-436D-8A43-CA69BD256FE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Foundation.CDN", "src\Foundation\CDN\code\Sitecore.Foundation.CDN.csproj", "{FC006BB1-EA7E-4FD8-B168-693693BD96D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Foundation.CDN.Tests", "src\Foundation\CDN\tests\Sitecore.Foundation.CDN.Tests\Sitecore.Foundation.CDN.Tests.csproj", "{C82C3686-A1A8-4BC5-9295-A39F655EF415}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC006BB1-EA7E-4FD8-B168-693693BD96D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC006BB1-EA7E-4FD8-B168-693693BD96D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC006BB1-EA7E-4FD8-B168-693693BD96D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC006BB1-EA7E-4FD8-B168-693693BD96D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C82C3686-A1A8-4BC5-9295-A39F655EF415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C82C3686-A1A8-4BC5-9295-A39F655EF415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C82C3686-A1A8-4BC5-9295-A39F655EF415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C82C3686-A1A8-4BC5-9295-A39F655EF415}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EEFDF92F-878F-436D-8A43-CA69BD256FE1} = {6BFFD3A7-F23E-431B-AAF7-375B9667B759}
+		{FC006BB1-EA7E-4FD8-B168-693693BD96D3} = {EEFDF92F-878F-436D-8A43-CA69BD256FE1}
+		{C82C3686-A1A8-4BC5-9295-A39F655EF415} = {EEFDF92F-878F-436D-8A43-CA69BD256FE1}
+	EndGlobalSection
+EndGlobal
