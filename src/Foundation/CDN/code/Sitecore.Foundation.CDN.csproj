@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Sitecore.Foundation.CDN.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Sitecore.Foundation.CDN.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -50,8 +52,16 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\SC.Microsoft.Extensions.DependencyInjection.Abstractions.8.2.0.160729\lib\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.161221\lib\NET452\Sitecore.Kernel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -86,10 +96,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Sitecore.Foundation.CDN.ruleset" />
+    <Content Include="App_Config\Include\Foundation\CDN\Sitecore.Foundation.CDN.config" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Jobs\IJobRunner.cs" />
+    <Compile Include="Jobs\JobRunner.cs" />
+    <Compile Include="IDeliveryProvider.cs" />
+    <Compile Include="Pipelines\PurgeFilter\AllowByPathFilter.cs" />
+    <Compile Include="Pipelines\PurgeFilter\PurgeFilterAssetsArgs.cs" />
+    <Compile Include="Providers\DatabaseProvider.cs" />
+    <Compile Include="Providers\IDatabaseProvider.cs" />
+    <Compile Include="Providers\ISiteProvider.cs" />
+    <Compile Include="Providers\SiteProvider.cs" />
+    <Compile Include="Publishing\Pipelines\PublishItem\PurgeJobScheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purge\IPurgeRequest.cs" />
+    <Compile Include="RegisterDependencies.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
@@ -99,7 +124,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Media\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
