@@ -16,7 +16,14 @@ namespace Sitecore.Foundation.CDN.Publishing.Pipelines.PublishItem
         /// </summary>
         private readonly BaseLog logger;
 
+        /// <summary>
+        /// Sitecore Pipeline Manager
+        /// </summary>
         private readonly BaseCorePipelineManager pipelineManager;
+
+        /// <summary>
+        /// Site Provider
+        /// </summary>
         private readonly ISiteProvider siteProvider;
 
         /// <summary>
@@ -33,7 +40,7 @@ namespace Sitecore.Foundation.CDN.Publishing.Pipelines.PublishItem
 
         public override void Process(PublishItemContext context)
         {
-            if (context == null || context.ItemId == ID.Null)
+/*            if (context == null || context.ItemId == ID.Null)
             {
                 this.logger.Error("Unable to schedule purge request.", this);
                 return;
@@ -47,12 +54,11 @@ namespace Sitecore.Foundation.CDN.Publishing.Pipelines.PublishItem
                 return;
             }
 
-
             var siteContext = this.siteProvider.GetSiteContext(item);
 
             if (siteContext == null)
             {
-                this.logger.Warn($"Unable to find a SiteContext for {item.ID}.", this);
+                this.logger.Warn($"Unable to schedule purge request without a SiteContext for {item.ID}.", this);
                 return;
             }
 
@@ -70,7 +76,7 @@ namespace Sitecore.Foundation.CDN.Publishing.Pipelines.PublishItem
                 "shell",
                 // Passed as a parameter to the job
                 item,
-                siteContext);
+                siteContext);*/
         }
     }
 }

@@ -13,13 +13,11 @@
 
         public void Process(PurgeFilterAssetsArgs args)
         {
-            var isAllowed = this.AllowedPaths.Any(path => args.Item.Paths.FullPath.StartsWith(path, true, CultureInfo.InvariantCulture));
+            var allowed =
+                args.Input.Where(
+                    item => this.AllowedPaths.Any(path => item.Paths.FullPath.StartsWith(path, true, CultureInfo.InvariantCulture)));
 
-            if (!isAllowed)
-            {
-                args.IsAllowed = false;
-                args.AbortPipeline();
-            }
+            args.Output = allowed;
         }
     }
 }

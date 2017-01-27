@@ -60,6 +60,10 @@
       <HintPath>..\..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\SC.Newtonsoft.Json.8.2.0.160729\lib\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.161221\lib\NET452\Sitecore.Kernel.dll</HintPath>
       <Private>True</Private>
@@ -93,6 +97,7 @@
       <HintPath>..\..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -102,9 +107,21 @@
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultDeliveryService.cs" />
+    <Compile Include="Domain\CdnContext.cs" />
+    <Compile Include="Domain\CdnSettings.cs" />
+    <Compile Include="Domain\ICdnSettings.cs" />
+    <Compile Include="HistoryService.cs" />
+    <Compile Include="Http\HttpService.cs" />
+    <Compile Include="Http\IHttpService.cs" />
+    <Compile Include="Http\ISerializer.cs" />
+    <Compile Include="Http\JsonSerializer.cs" />
+    <Compile Include="IDeliveryService.cs" />
+    <Compile Include="IHistoryService.cs" />
+    <Compile Include="IPathService.cs" />
+    <Compile Include="PathService.cs" />
     <Compile Include="Jobs\IJobRunner.cs" />
-    <Compile Include="Jobs\JobRunner.cs" />
-    <Compile Include="IDeliveryProvider.cs" />
+    <Compile Include="Jobs\PurgeJobRunner.cs" />
     <Compile Include="Pipelines\PurgeFilter\AllowByPathFilter.cs" />
     <Compile Include="Pipelines\PurgeFilter\PurgeFilterAssetsArgs.cs" />
     <Compile Include="Providers\DatabaseProvider.cs" />
@@ -113,8 +130,10 @@
     <Compile Include="Providers\SiteProvider.cs" />
     <Compile Include="Publishing\Pipelines\PublishItem\PurgeJobScheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Purge\IPurgeRequest.cs" />
+    <Compile Include="Publishing\Pipelines\Publish\PurgeJobScheduler.cs" />
     <Compile Include="RegisterDependencies.cs" />
+    <Compile Include="Repositories\CdnContextRepository.cs" />
+    <Compile Include="Repositories\ICdnContextRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
@@ -126,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Media\" />
+    <Folder Include="Settings\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

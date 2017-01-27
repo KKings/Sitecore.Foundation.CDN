@@ -9,7 +9,14 @@
 
     public class SiteProvider : ISiteProvider
     {
+        /// <summary>
+        /// Sitecore Configuration Factory Implementation
+        /// </summary>
         private readonly BaseFactory factory;
+
+        /// <summary>
+        /// Database Provider Factory
+        /// </summary>
         private readonly IDatabaseProvider databaseProvider;
 
         public SiteProvider(BaseFactory factory, IDatabaseProvider databaseProvider)
@@ -19,10 +26,10 @@
         }
 
         /// <summary>
-        /// 
+        /// Gets the Site in relation to an Item
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
+        /// <param name="item">The Item</param>
+        /// <returns><c>SiteContext</c> for the item or the Shell site</returns>
         public virtual SiteContext GetSiteContext(Item item)
         {
             if (item == null)

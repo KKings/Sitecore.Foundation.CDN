@@ -1,5 +1,6 @@
 ﻿namespace Sitecore.Foundation.CDN.Pipelines.PurgeFilter
 {
+    using System.Collections.Generic;
     using Data.Items;
     using Sitecore.Pipelines;
     using Sites;
@@ -7,21 +8,18 @@
     public class PurgeFilterAssetsArgs : PipelineArgs
     {
         /// <summary>
-        /// Gets the SiteContext
+        /// Gets the Items
         /// </summary>
-        public SiteContext SiteContext { get; private set; }
-
-        public Item Item { get; private set; }
-
+        public IEnumerable<Item> Input { get; private set; }
+    
         /// <summary>
-        /// Gets or sets if the Item passed within the args should be filtered by the caller
+        /// Gets the Items that were not filtered
         /// </summary>
-        public bool IsAllowed { get; set; } = true;
+        public IEnumerable<Item> Output { get; set; } = new List<Item>();
 
-        public PurgeFilterAssetsArgs(SiteContext siteContext, Item item)
+        public PurgeFilterAssetsArgs(IEnumerable<Item> input)
         {
-            this.SiteContext = siteContext;
-            this.Item = item;
+            this.Input = input;
         }
     }
 }
