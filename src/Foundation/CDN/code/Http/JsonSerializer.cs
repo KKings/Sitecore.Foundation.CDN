@@ -22,12 +22,7 @@
         /// <returns>Object of type <see cref="T"/></returns>
         public T Deserialize<T>(string value)
         {
-            if (String.IsNullOrEmpty(value))
-            {
-                return default(T);
-            }
-
-            return JsonConvert.DeserializeObject<T>(value);
+            return String.IsNullOrEmpty(value) ? default(T) : JsonConvert.DeserializeObject<T>(value);
         }
     }
 }

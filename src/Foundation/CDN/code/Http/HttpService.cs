@@ -25,16 +25,21 @@
             this.serializer = serializer;
         }
 
+        /// <summary>
+        /// Creates the Web Request
+        /// </summary>
+        /// <param name="uri">The Uri</param>
+        /// <returns>Instance of <see cref="HttpWebRequest"/></returns>
         public virtual HttpWebRequest CreateWebRequest(Uri uri)
         {
             return (HttpWebRequest)WebRequest.Create(uri);
         }
 
         /// <summary>
-        /// 
+        /// Synchronous GET to a <see cref="Uri"/>
         /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <param name="uri">The Uri</param>
+        /// <returns>Instance of <see cref="T"/></returns>
         public virtual T Get<T>(Uri uri)
         {
             var httpWebRequest = this.CreateWebRequest(uri);
@@ -75,10 +80,10 @@
         }
 
         /// <summary>
-        /// 
+        /// Asynchronous GET to a <see cref="Uri"/>
         /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
+        /// <param name="uri">The Uri</param>
+        /// <returns>Instance of <see cref="T"/></returns>
         public virtual async Task<T> GetAsync<T>(Uri uri)
         {
             var httpWebRequest = this.CreateWebRequest(uri);
@@ -119,13 +124,12 @@
         }
 
         /// <summary>
-        /// 
+        /// Synchronous POST to a <see cref="Uri"/>
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="uri"></param>
-        /// <param name="data"></param>
-        /// <param name="contentType"></param>
-        /// <returns></returns>
+        /// <param name="uri">The Uri</param>
+        /// <param name="data">The data to send in the stream</param>
+        /// <param name="contentType">The content type of the stream</param>
+        /// <returns>Instance of <see cref="T"/></returns>
         public virtual T Post<T>(Uri uri, object data, string contentType = "application/json")
         {
             var httpWebRequest = this.CreateWebRequest(uri);
@@ -173,12 +177,12 @@
         }
 
         /// <summary>
-        /// 
+        /// Asynchronous POST to a <see cref="Uri"/>
         /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="data"></param>
-        /// <param name="contentType"></param>
-        /// <returns></returns>
+        /// <param name="uri">The Uri</param>
+        /// <param name="data">The data to send in the stream</param>
+        /// <param name="contentType">The content type of the stream</param>
+        /// <returns>Instance of <see cref="T"/></returns>
         public virtual async Task<T> PostAsync<T>(Uri uri, object data, string contentType = "application/json")
         {
             var httpWebRequest = this.CreateWebRequest(uri);

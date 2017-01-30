@@ -119,6 +119,8 @@
     <Compile Include="IDeliveryService.cs" />
     <Compile Include="IHistoryService.cs" />
     <Compile Include="IPathService.cs" />
+    <Compile Include="Media\CdnMediaManager.cs" />
+    <Compile Include="Media\CdnMediaProvider.cs" />
     <Compile Include="PathService.cs" />
     <Compile Include="Jobs\IJobRunner.cs" />
     <Compile Include="Jobs\PurgeJobRunner.cs" />
@@ -143,10 +145,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Media\" />
-    <Folder Include="Settings\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

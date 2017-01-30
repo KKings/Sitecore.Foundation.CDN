@@ -1,17 +1,22 @@
 ﻿namespace Sitecore.Foundation.CDN
 {
+    using Abstractions;
     using DependencyInjection;
     using Domain;
     using Http;
     using Jobs;
+    using Media;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.DependencyInjection.Extensions;
     using Providers;
     using Repositories;
+    using Resources.Media;
 
     public class RegisterDependencies : IServicesConfigurator
     {
         public void Configure(IServiceCollection serviceCollection)
         {
+            serviceCollection.Replace(ServiceDescriptor.Singleton<MediaProvider, CdnMediaProvider>());
             serviceCollection.AddSingleton<IPathService, PathService>();
             serviceCollection.AddSingleton<ICdnContextRepository, CdnContextRepository>();
             serviceCollection.AddSingleton<IHttpService, HttpService>();
