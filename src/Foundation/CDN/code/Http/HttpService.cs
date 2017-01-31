@@ -1,4 +1,25 @@
-﻿namespace Sitecore.Foundation.CDN.Http
+﻿// MIT License
+// 
+// Copyright (c) 2017 Kyle Kingsbury
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+namespace Sitecore.Foundation.CDN.Http
 {
     using System;
     using System.IO;
@@ -10,12 +31,12 @@
     public class HttpService : IHttpService
     {
         /// <summary>
-        /// Sitecore Logging Implementation
+        ///     Sitecore Logging Implementation
         /// </summary>
         private readonly BaseLog logger;
 
         /// <summary>
-        /// Serializer for converting objects to strings and strings to objects
+        ///     Serializer for converting objects to strings and strings to objects
         /// </summary>
         private readonly ISerializer serializer;
 
@@ -26,20 +47,10 @@
         }
 
         /// <summary>
-        /// Creates the Web Request
+        ///     Synchronous GET to a <see cref="Uri" />
         /// </summary>
         /// <param name="uri">The Uri</param>
-        /// <returns>Instance of <see cref="HttpWebRequest"/></returns>
-        public virtual HttpWebRequest CreateWebRequest(Uri uri)
-        {
-            return (HttpWebRequest)WebRequest.Create(uri);
-        }
-
-        /// <summary>
-        /// Synchronous GET to a <see cref="Uri"/>
-        /// </summary>
-        /// <param name="uri">The Uri</param>
-        /// <returns>Instance of <see cref="T"/></returns>
+        /// <returns>Instance of <see cref="T" /></returns>
         public virtual T Get<T>(Uri uri)
         {
             var httpWebRequest = this.CreateWebRequest(uri);
@@ -80,10 +91,10 @@
         }
 
         /// <summary>
-        /// Asynchronous GET to a <see cref="Uri"/>
+        ///     Asynchronous GET to a <see cref="Uri" />
         /// </summary>
         /// <param name="uri">The Uri</param>
-        /// <returns>Instance of <see cref="T"/></returns>
+        /// <returns>Instance of <see cref="T" /></returns>
         public virtual async Task<T> GetAsync<T>(Uri uri)
         {
             var httpWebRequest = this.CreateWebRequest(uri);
@@ -95,7 +106,7 @@
             try
             {
                 using (var response = httpWebRequest.GetResponse() as HttpWebResponse)
-                // ReSharper disable once PossibleNullReferenceException
+                    // ReSharper disable once PossibleNullReferenceException
                 using (var responseStream = response.GetResponseStream())
                 {
                     // ReSharper disable once AssignNullToNotNullAttribute
@@ -124,12 +135,12 @@
         }
 
         /// <summary>
-        /// Synchronous POST to a <see cref="Uri"/>
+        ///     Synchronous POST to a <see cref="Uri" />
         /// </summary>
         /// <param name="uri">The Uri</param>
         /// <param name="data">The data to send in the stream</param>
         /// <param name="contentType">The content type of the stream</param>
-        /// <returns>Instance of <see cref="T"/></returns>
+        /// <returns>Instance of <see cref="T" /></returns>
         public virtual T Post<T>(Uri uri, object data, string contentType = "application/json")
         {
             var httpWebRequest = this.CreateWebRequest(uri);
@@ -177,12 +188,12 @@
         }
 
         /// <summary>
-        /// Asynchronous POST to a <see cref="Uri"/>
+        ///     Asynchronous POST to a <see cref="Uri" />
         /// </summary>
         /// <param name="uri">The Uri</param>
         /// <param name="data">The data to send in the stream</param>
         /// <param name="contentType">The content type of the stream</param>
-        /// <returns>Instance of <see cref="T"/></returns>
+        /// <returns>Instance of <see cref="T" /></returns>
         public virtual async Task<T> PostAsync<T>(Uri uri, object data, string contentType = "application/json")
         {
             var httpWebRequest = this.CreateWebRequest(uri);
@@ -227,6 +238,16 @@
             }
 
             return default(T);
+        }
+
+        /// <summary>
+        ///     Creates the Web Request
+        /// </summary>
+        /// <param name="uri">The Uri</param>
+        /// <returns>Instance of <see cref="HttpWebRequest" /></returns>
+        public virtual HttpWebRequest CreateWebRequest(Uri uri)
+        {
+            return (HttpWebRequest)WebRequest.Create(uri);
         }
     }
 }

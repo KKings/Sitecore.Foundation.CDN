@@ -119,7 +119,6 @@
     <Compile Include="IDeliveryService.cs" />
     <Compile Include="IHistoryService.cs" />
     <Compile Include="IPathService.cs" />
-    <Compile Include="Media\CdnMediaManager.cs" />
     <Compile Include="Media\CdnMediaProvider.cs" />
     <Compile Include="PathService.cs" />
     <Compile Include="Jobs\IJobRunner.cs" />
@@ -130,7 +129,6 @@
     <Compile Include="Providers\IDatabaseProvider.cs" />
     <Compile Include="Providers\ISiteProvider.cs" />
     <Compile Include="Providers\SiteProvider.cs" />
-    <Compile Include="Publishing\Pipelines\PublishItem\PurgeJobScheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publishing\Pipelines\Publish\PurgeJobScheduler.cs" />
     <Compile Include="RegisterDependencies.cs" />
